@@ -30,37 +30,17 @@ func main() {
 			}
 		}
 
-		time(func() {
-			Encrypt(bts[:], tmp[:])
-		}, "self encrypt")
+		time(func() { Encrypt(bts[:], tmp[:]) }, "self encrypt")
+		time(func() { Decrypt(tmp[:], dst[:]) }, "self decrypt")
 
-		time(func() {
-			Decrypt(tmp[:], dst[:])
-		}, "self decrypt")
+		time(func() { AesEncrypt(bts[:], tmp[:]) }, "aes encrypt")
+		time(func() { AesDecrypt(tmp[:], dst[:]) }, "aes decrypt")
 
-		time(func() {
-			AesEncrypt(bts[:], tmp[:])
-		}, "aes encrypt")
+		time(func() { DesEncrypt(bts[:], tmp[:]) }, "des encrypt")
+		time(func() { DesDecrypt(tmp[:], dst[:]) }, "des decrypt")
 
-		time(func() {
-			AesDecrypt(tmp[:], dst[:])
-		}, "aes decrypt")
-
-		time(func() {
-			DesEncrypt(bts[:], tmp[:])
-		}, "des encrypt")
-
-		time(func() {
-			DesDecrypt(tmp[:], dst[:])
-		}, "des decrypt")
-
-		time(func() {
-			Rc4Encrypt(bts[:], tmp[:])
-		}, "rc4 encrypt")
-
-		time(func() {
-			Rc4Decrypt(tmp[:], dst[:])
-		}, "rc4 decrypt")
+		time(func() { Rc4Encrypt(bts[:], tmp[:]) }, "rc4 encrypt")
+		time(func() { Rc4Decrypt(tmp[:], dst[:]) }, "rc4 decrypt")
 
 		fmt.Println()
 	}
